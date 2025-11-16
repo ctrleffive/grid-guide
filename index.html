@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <base href="/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#141414">
+
+  <title>GridGuide - Calculate your EV charging costs</title>
+  <meta name="title" content="GridGuide - Calculate your EV charging costs">
+  <meta name="description"
+    content="Save and share your tracks effortlessly. Add chords and lyrics, edit in real time, and practice with built-in tools.">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://grid-guide.chandujs.com">
+  <meta property="og:title" content="GridGuide - Calculate your EV charging costs">
+  <meta property="og:description"
+    content="Save and share your tracks effortlessly. Add chords and lyrics, edit in real time, and practice with built-in tools.">
+  <meta property="og:image" content="https://grid-guide.chandujs.com/banner.jpg">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://grid-guide.chandujs.com">
+  <meta property="twitter:title" content="GridGuide - Calculate your EV charging costs">
+  <meta property="twitter:description"
+    content="Save and share your tracks effortlessly. Add chords and lyrics, edit in real time, and practice with built-in tools.">
+  <meta property="twitter:image" content="https://grid-guide.chandujs.com/banner.jpg">
+
+
+  <link rel="icon" href="/favicon.ico" sizes="48x48">
+  <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
+
+  <style>
+    body:before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -10;
+    }
+
+    body,
+    .light body,
+    body:before,
+    .light body:before {
+      background-color: hsl(0, 0%, 99%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+
+      body,
+      body:before {
+        background-color: hsl(0, 0%, 5%);
+      }
+    }
+
+    .dark body,
+    .dark body:before {
+      background-color: hsl(0, 0%, 5%);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
+</html>

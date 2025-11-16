@@ -1,0 +1,104 @@
+@import "@fontsource-variable/inter";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	:root {
+		--background: 0 0% 97.25%;
+		--foreground: 0 0.02% 3.94%;
+		--card: 0 0% 100%;
+		--card-foreground: 0 0.02% 3.94%;
+		--popover: 0 0% 100%;
+		--popover-foreground: 0 0.02% 3.94%;
+		--primary: 38.21 84.02% 7.72%;
+		--primary-foreground: 37.17 64.2% 86.72%;
+		--secondary: 0 0.24% 96.06%;
+		--secondary-foreground: 0 0.02% 9.06%;
+		--muted: 0 0.24% 96.06%;
+		--muted-foreground: 0 0.01% 45.16%;
+		--accent: 0 0.24% 96.06%;
+		--accent-foreground: 0 0.02% 9.06%;
+		--destructive: 351.72 100% 40.53%;
+		--border: 0 0.09% 89.82%;
+		--input: 0 0.09% 89.82%;
+		--ring: 0 0.02% 63.02%;
+		--chart-1: 23.82 100% 40.32%;
+		--chart-2: 175.86 100% 21.23%;
+		--chart-3: 195.82 72.18% 22.87%;
+		--chart-4: 46.69 100% 38.52%;
+		--chart-5: 40.59 100% 38.84%;
+		--radius: 0.625rem;
+	}
+
+	.dark {
+		--background: 0 0.02% 3.94%;
+		--foreground: 0 0.5% 98.03%;
+		--card: 0 0.02% 9.06%;
+		--card-foreground: 0 0.5% 98.03%;
+		--popover: 0 0.02% 9.06%;
+		--popover-foreground: 0 0% 98.04%;
+		--primary: 37.17 64.2% 86.72%;
+		--primary-foreground: 38.21 84.02% 7.72%;
+		--secondary: 0 0.01% 14.94%;
+		--secondary-foreground: 0 0.5% 98.03%;
+		--muted: 0 0.01% 14.94%;
+		--muted-foreground: 0 0.02% 63.02%;
+		--accent: 0 0.01% 14.94%;
+		--accent-foreground: 0 0.5% 98.03%;
+		--destructive: 358.76 100% 69.84%;
+		--destructive-foreground: 358.76 100% 69.84%;
+		--border: 0 0% 20%;
+		--input: 0 0% 25%;
+		--ring: 0 0.01% 45.16%;
+		--chart-1: 225.34 84.1% 48.99%;
+		--chart-2: 164.34 100% 26.1%;
+		--chart-3: 40.59 100% 38.84%;
+		--chart-4: 272.1 100% 65.16%;
+		--chart-5: 345.36 100% 56.41%;
+	}
+}
+
+@layer base {
+	* {
+		@apply border-border dark:border-border/50 outline-none;
+	}
+
+	*:not(input):not(textarea) {
+		@apply select-none;
+	}
+
+	body,
+	html {
+		@apply text-foreground overscroll-y-contain touch-pan-x touch-pan-y;
+	}
+
+	input[type="number"]::-webkit-inner-spin-button,
+	input[type="number"]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	input[type="number"] {
+		-moz-appearance: textfield;
+	}
+
+	.field-sizing-content {
+		field-sizing: content;
+	}
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+*::-webkit-scrollbar {
+	display: none;
+}
+
+* {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
+}
