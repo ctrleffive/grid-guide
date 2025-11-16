@@ -16,7 +16,7 @@ export const App = () => {
 		<>
 			<ThemeProvider defaultTheme="dark" storageKey="app-theme">
 				<RandomBG />
-				<div className="flex flex-col items-center justify-center min-h-screen gap-6">
+				<div className="flex flex-col items-center justify-center min-h-screen gap-6 px-4">
 					<ChargingCalculator />
 					<div className="text-center text-muted-foreground space-y-1 text-sm">
 						<p>&copy; {new Date().getFullYear()} GridGuide. All rights reserved.</p>

@@ -30,7 +30,7 @@ export default defineConfig({
 
 			manifest: {
 				name: "GridGuide",
-				short_name: "grid-guide",
+				short_name: "GridGuide",
 				display: "standalone",
 				description: "Calculate your EV charging costs",
 				background_color: "#000000",
