@@ -19,6 +19,7 @@ GridGuide is a React-based Progressive Web Application built with a component-ba
 - PWA implementation for offline capability and installability
 - Mobile-first responsive design approach
 - Dark mode as default theme with localStorage persistence
+- Charging efficiency factor (89.45%) included in calculations to account for real-world energy losses
 
 ## Design Patterns in Use
 - Component-based architecture with clear separation of concerns

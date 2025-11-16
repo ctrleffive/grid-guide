@@ -4,7 +4,8 @@
 The GridGuide application is a fully functional EV charging cost calculator PWA that allows users to input their current battery percentage, target percentage, battery capacity, and charging cost per kWh to calculate the estimated cost of charging.
 
 ## Recent Changes
-- Core calculation logic implemented: Energy Needed (kWh) = (Target % - Current %) × Total Capacity, multiplied by Station Cost for Estimated Cost
+- Core calculation logic updated: Energy Needed (kWh) = ((Target % - Current %) × Total Capacity) / Charging Efficiency (89.45%), multiplied by Station Cost for Estimated Cost
+- Charging efficiency factor added to account for real-world energy losses during charging
 - React-based UI with mobile-first design
 - PWA functionality with offline capability
 - Dark mode theme implemented

@@ -71,7 +71,7 @@
 
 	body,
 	html {
-		@apply text-foreground overscroll-y-contain touch-pan-x touch-pan-y;
+		@apply text-foreground overscroll-none touch-pan-x touch-pan-y;
 	}
 
 	input[type="number"]::-webkit-inner-spin-button,
@@ -83,22 +83,4 @@
 	input[type="number"] {
 		-moz-appearance: textfield;
 	}
-
-	.field-sizing-content {
-		field-sizing: content;
-	}
-}
-
-html,
-body {
-	overflow-x: hidden;
-}
-
-*::-webkit-scrollbar {
-	display: none;
-}
-
-* {
-	-ms-overflow-style: none;
-	scrollbar-width: none;
 }

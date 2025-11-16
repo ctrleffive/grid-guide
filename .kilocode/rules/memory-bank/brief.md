@@ -15,7 +15,7 @@ The primary objectives for this project are:
 ## Key Features
 
 - Input Parameters: Current Battery %, Target Battery %, Total Battery Capacity (kWh), Station Cost per kWh.
-- Core Calculation Engine: Energy Needed (kWh) = (Target % - Current %) × Total Capacity, then multiplied by Station Cost for Estimated Cost
+- Core Calculation Engine: Energy Needed (kWh) = ((Target % - Current %) × Total Capacity) / Charging Efficiency, then multiplied by Station Cost for Estimated Cost. This accounts for energy losses during charging (typically 85-95% efficiency).
 - Interactive User Interface: Sliders for quick adjustments to percentage inputs, complemented by number inputs for fine-tuned precision
 - Responsive Design: Mobile-first, dark-mode design philosophy for excellent visibility across all devices
 
