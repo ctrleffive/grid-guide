@@ -8,13 +8,11 @@ import { Slider } from "@/components/ui/slider";
 import { useState } from "react";
 
 export const ChargingCalculator = () => {
-	// Account for charging inefficiency (typically 85-95% efficiency)
-	// To match expected calculation result, using ~89.45% efficiency
-	// Assuming ~89.45% charging efficiency
-	const [chargingEfficiency] = useState(0.9);
+	// Assuming charging efficiency
+	const [chargingEfficiency] = useState(0.85);
 	const [currentCharge, setCurrentCharge] = useState(20);
 	const [targetCharge, setTargetCharge] = useState(80);
-	const [batteryCapacity, setBatteryCapacity] = useState(60);
+	const [batteryCapacity, setBatteryCapacity] = useState(52.9);
 	const [costPerKwh, setCostPerKwh] = useState(0.15);
 	const [results, setResults] = useState<{
 		cost: number;
@@ -55,66 +53,61 @@ export const ChargingCalculator = () => {
 					</div>
 				</div>
 
+				{/* Current Battery Charge */}
+				<div className="space-y-2">
+					<label className="text-sm text-foreground">Current Battery</label>
+					<Slider
+						value={[currentCharge]}
+						onValueChange={(value) => setCurrentCharge(value[0])}
+						step={1}
+						min={0}
+						max={100}
+						className="w-full"
+					/>
+					<div className="space-x-1">
+						<span className="font-bold">{currentCharge}</span>
+						<span className="text-muted-foreground text-sm">%</span>
+					</div>
+				</div>
+
+				{/* Target Battery Charge */}
+				<div className="space-y-2">
+					<label className="text-sm text-foreground">Target Battery</label>
+					<Slider
+						onValueChange={(value) =>
+							handleTargetChargeChange(
+								Math.max(
+									currentCharge,
+									Math.min(100, value[0] || currentCharge),
+								),
+							)
+						}
+						value={[targetCharge]}
+						min={currentCharge}
+						max={100}
+						step={1}
+						className="w-full"
+					/>
+					<div className="space-x-1">
+						<span className="font-bold">{targetCharge}</span>
+						<span className="text-muted-foreground text-sm">%</span>
+					</div>
+				</div>
+
 				{/* Inputs Section */}
 				<div className="grid grid-cols-2 gap-4">
-					{/* Current Battery Charge */}
-					<div className="space-y-2">
-						<label className="text-sm text-foreground">
-							Current Battery
-						</label>
-						<Slider
-							value={[currentCharge]}
-							onValueChange={(value) => setCurrentCharge(value[0])}
-							step={1}
-							min={0}
-							max={100}
-							className="w-full"
-						/>
-						<div className="space-x-1">
-							<span className="font-bold">{currentCharge}</span>
-							<span className="text-muted-foreground text-sm">%</span>
-						</div>
-					</div>
-
-					{/* Target Battery Charge */}
-					<div className="space-y-2">
-						<label className="text-sm text-foreground">
-							Target Battery
-						</label>
-						<Slider
-							onValueChange={(value) =>
-								handleTargetChargeChange(
-									Math.max(
-										currentCharge,
-										Math.min(100, value[0] || currentCharge),
-									),
-								)
-							}
-							value={[targetCharge]}
-							min={currentCharge}
-							max={100}
-							className="w-full"
-						/>
-						<div className="space-x-1">
-							<span className="font-bold">{targetCharge}</span>
-							<span className="text-muted-foreground text-sm">%</span>
-						</div>
-					</div>
-
 					{/* Battery Capacity */}
 					<div className="space-y-2">
-						<label className="text-sm text-foreground">
-							Battery Capacity
-						</label>
+						<label className="text-sm text-foreground">Battery Capacity</label>
 						<div className="flex items-center gap-2 relative">
 							<Input
 								type="number"
 								value={batteryCapacity}
-								onChange={(e) =>
-									setBatteryCapacity(parseFloat(e.target.value) || 0)
-								}
+								onChange={(e) => {
+									setBatteryCapacity(parseFloat(e.target.value) || 0);
+								}}
 								min={0}
-								step={1}
+								step={0.1}
 								className="bg-input border-border text-foreground placeholder:text-muted-foreground w-full"
 							/>
 							<span className="text-muted-foreground text-sm font-medium absolute right-3">
@@ -125,9 +118,7 @@ export const ChargingCalculator = () => {
 
 					{/* Charging Cost */}
 					<div className="space-y-2">
-						<label className="text-sm text-foreground">
-							Cost per Unit
-						</label>
+						<label className="text-sm text-foreground">Cost per Unit</label>
 						<div className="flex items-center gap-2 relative">
 							<Input
 								type="number"
@@ -155,7 +146,9 @@ export const ChargingCalculator = () => {
 							<p className="text-2xl font-bold text-primary">
 								INR {results.cost.toFixed(2)}
 							</p>
-							<p className="text-xs text-muted-foreground">expecting {chargingEfficiency * 100}% efficiency</p>
+							<p className="text-xs text-muted-foreground">
+								expecting {chargingEfficiency * 100}% efficiency
+							</p>
 						</div>
 					</div>
 				)}

@@ -4,15 +4,16 @@ import { useEffect, useState } from "react";
 const generateBlobs = () => {
 	const count = 5;
 	const colors = [
-		"#F3E2C7", // beige
-		"#E07A5F", // terracotta
-		"#81B29A", // soft green
-		"#3D405B", // deep slate
-		"#F2CC8F", // warm sand
-		"#A0C4E2", // light blue
-		"#D96A6A", // muted red
-		"#6A4C93", // bold purple
-		"#FFB703", // golden yellow
+		"#006B5A", // deep teal
+		"#008B72", // forest green
+		"#00A884", // spring green
+		"#00C4A7", // mint green
+		"#00D1C1", // turquoise
+		"#00D9D5", // aqua
+		"#00B4D8", // sky blue
+		"#0096C7", // blue
+		"#007B6", // cobalt blue
+		"#023E8A", // navy blue
 	];
 	const topStart = 35;
 	return Array.from({ length: count }).map((_, index) => ({
@@ -37,7 +38,7 @@ export const RandomBG = () => {
 		<div
 			className={cn(
 				"fixed top-0 left-0 overflow-hidden -z-10 w-full h-full dark:bg-transparent transition-opacity duration-1000",
-				"opacity-50 bg-black/10"
+				"opacity-50 bg-black/10",
 			)}
 		>
 			{blobs.map((blob) => (
