@@ -15,17 +15,23 @@ export const ChargingCalculator = () => {
 	const [batteryCapacity, setBatteryCapacity] = useState(52.9);
 	const [costPerKwh, setCostPerKwh] = useState(0.15);
 	const [results, setResults] = useState<{
-		cost: number;
+		baseCost: number;
+		gst: number;
+		totalCost: number;
 	} | null>(null);
 
 	const handleCalculate = () => {
 		const kWhNeeded = batteryCapacity * ((targetCharge - currentCharge) / 100);
 
 		const actualEnergyNeeded = kWhNeeded / chargingEfficiency;
-		const totalCost = actualEnergyNeeded * costPerKwh;
+		const baseCost = actualEnergyNeeded * costPerKwh;
+		const gst = baseCost * 0.18;
+		const totalCost = baseCost + gst;
 
 		setResults({
-			cost: totalCost,
+			baseCost,
+			gst,
+			totalCost,
 		});
 	};
 
@@ -139,16 +145,26 @@ export const ChargingCalculator = () => {
 				{results && (
 					<div className="space-y-3">
 						{/* Estimated Cost */}
-						<div className="bg-muted/30 rounded-lg p-4 space-y-1 border border-primary/10">
-							<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-								Estimated Cost
-							</p>
-							<p className="text-2xl font-bold text-primary">
-								INR {results.cost.toFixed(2)}
-							</p>
-							<p className="text-xs text-muted-foreground">
-								expecting {chargingEfficiency * 100}% efficiency
-							</p>
+						<div className="bg-muted/30 rounded-lg p-4 space-y-3 border border-primary/10">
+							<div className="space-y-1">
+								<p className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+									Estimated Cost
+								</p>
+								<p className="text-2xl font-bold text-primary">
+									INR {results.totalCost.toFixed(2)}
+								</p>
+							</div>
+							<div className="text-xs text-muted-foreground space-y-0.5 border-t border-border/50 pt-2">
+								<p className="flex justify-between">
+									<span>Base cost</span>
+									<span>INR {results.baseCost.toFixed(2)}</span>
+								</p>
+								<p className="flex justify-between">
+									<span>GST (18%)</span>
+									<span>INR {results.gst.toFixed(2)}</span>
+								</p>
+								<p>expecting {chargingEfficiency * 100}% efficiency</p>
+							</div>
 						</div>
 					</div>
 				)}
